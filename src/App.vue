@@ -19,7 +19,7 @@
       </v-list>
       <v-list class="pt-0" dense>
         <v-divider></v-divider>
-        <v-list-tile v-for="item in items" :key="item.title" @click="">
+        <v-list-tile v-for="item in items" :key="item.title" :to="{ name: item.to }" exact>
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -29,20 +29,22 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar app>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+    <v-toolbar app class="yellow accent-4">
+      <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
       <v-toolbar-title>
-        V Meetup
+        <v-btn flat :to="{ name: 'Home'}" exact>
+          V Meetup
+        </v-btn>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <v-btn flat>
-          <v-icon left>supervisor_account</v-icon>
-          See Meetups
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn flat v-for="item in items" :key="item.title" :to="{ name: item.to }" exact>
+          <v-icon left>{{ item.icon }}</v-icon>
+          {{ item.title }}
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <v-container fill-height fluid>
+    <v-container fluid>
       <router-view></router-view>
     </v-container>
     <v-footer app></v-footer>
@@ -55,8 +57,11 @@
       return {
         drawer: null,
         items: [
-          { title: 'Home', icon: 'dashboard' },
-          { title: 'About', icon: 'question_answer' }
+          { title: 'View Meetups', icon: 'supervisor_accounts', to: 'Meetups' },
+          { title: 'Organize Meetup', icon: 'room', to: 'CreateMeetup' },
+          { title: 'Profile', icon: 'person', to: 'Profile' },
+          { title: 'Sign up', icon: 'face', to: 'Signup' },
+          { title: 'Sign in', icon: 'lock_open', to: 'Signin' }
         ]
       }
     }
