@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-layout align-center justify-center>
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
         <img src="/static/img/v.png" alt="Vuetify.js" class="mb-5">
@@ -13,5 +13,5 @@
         </blockquote>
       </v-layout>
     </v-slide-y-transition>
-  </v-container>
+  </v-layout>
 </template>
