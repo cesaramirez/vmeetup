@@ -7,8 +7,8 @@
                            :src="item.src"
                            :key="i"
                            transition="fade"
-                          reverseTransition="fade">
-            <div class="title">{{ item.title }}</div>
+                           reverseTransition="fade">
+            <div class="title" @click="onLoadMeetup(item)" style="cursor: pointer">{{ item.title }}</div>
           </v-carousel-item>
         </v-carousel>
       </v-flex>
@@ -37,6 +37,11 @@
           {src: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Chicago_Theatre_blend.jpg', id: 2, title: 'Meetup in Chicago'},
           {src: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Los_Angeles_center_with_mountains_at_her_back.jpg', id: 3, title: 'Meetup in Los Angeles'}
         ]
+      }
+    },
+    methods: {
+      onLoadMeetup (meetup) {
+        this.$router.push({name: 'Meetup', params: {id: meetup.id}})
       }
     }
   }
