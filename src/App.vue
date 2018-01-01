@@ -44,9 +44,9 @@
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <v-container fluid>
+    <v-content>
       <router-view></router-view>
-    </v-container>
+    </v-content>
     <v-footer app></v-footer>
   </v-app>
 </template>
