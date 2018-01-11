@@ -39,6 +39,21 @@ export const store = new Vuex.Store({
     featureMeetups: getters => getters.loadedMeetups.slice(0, 5),
     loadedMeetup: state => (meetupId) => state.loadedMeetups.find(meetup => meetup.id === meetupId)
   },
-  mutations: {},
-  actions: {}
+  mutations: {
+    createMeetup (state, payload) {
+      state.loadedMeetups.push(payload)
+    }
+  },
+  actions: {
+    createMeetup ({commit}, payload) {
+      console.log('action')
+      const meetup = {
+        title: payload.title,
+        location: payload.location,
+        image: payload.image,
+        description: payload.description
+      }
+      commit('createMeetup', meetup)
+    }
+  }
 })
