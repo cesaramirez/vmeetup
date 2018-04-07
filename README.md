@@ -1,4 +1,4 @@
-# vmeetup
+# vmeetup (WIP)
 
 > A dev meetup application built with Vue + Vuetify + Firebase
 
